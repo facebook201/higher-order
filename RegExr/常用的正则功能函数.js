@@ -18,3 +18,19 @@ function camelize(str) {
         return chr ? chr.toUpperCase() : '';
     });
 }
+
+/**
+ * 获取url指定参数值
+ * ["?name=lisi"]
+ */
+
+function getParamName(attr) {
+    let match = RegExp(`[?&${attr}=(^&]*)`).exec(window.location.search); // 分组运算符把结果存在exec 函数返回的结果里
+
+    // url中的+表示空格 要替换掉
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+// getParamName('name') list
+
+

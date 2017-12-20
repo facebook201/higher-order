@@ -75,3 +75,98 @@ result; // lbca 第二个没有被替换掉
 
 ```
 
+
+
+
+
+###  RegExp.prototype.test 方法
+
+**执行一个检索 用来查看正则表达式与指定的字符串是否匹配 返回true or false**
+
+**当你想要知道一个模式是否存在于一个字符串中。 就可以用test()。 而search方法 返回索引。 如果没有找到就返回-1。 **
+
+
+
+```javasc
+let str = 'hello world';
+
+// 测试hello是否存在字符串的最开始位置
+/^hello/.test(str); // true
+
+
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
+
+
+### RegExp.prototype.exec 
+
+**exec 在一个指定字符串中执行一个搜索匹配、 返回一个结果数组或者null** 如果你只是判断是否匹配 可以使用 test。
+
+```javascript
+regexObj.exec(str);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
