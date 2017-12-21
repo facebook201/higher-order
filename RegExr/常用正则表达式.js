@@ -111,6 +111,7 @@ console.log(dP2.test("2017-15-11"));
 console.log(dP2.test("2017-02-29"));
 
 
-/**
- * 12 QQ号码正则
- */
+//车牌号正则
+var cPattern = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
+//输出 true
+console.log(cPattern.test("京K39006"));
