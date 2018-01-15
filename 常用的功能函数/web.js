@@ -46,6 +46,20 @@ function param(options) {
     return param;
 }
 
+// 如果参数里面还有对象 
+function filterParam(param) {
+    const params = Object.assign({}, param);
+    Object.keys(params).filter(v => {
+        if (params[v] === '') {
+            delete params[v]
+        } else if (!params[v] === 'object') {
+            // 递归将属性值为对象的值进行再次遍历监测 把过滤之后的值返回给当前属性
+            params[v] = filterParam(params[v]);
+        }
+    });
+    return params;
+}
+
 /**
  * 判断一个对象是否为空 对象是没有length属性的 但是我们可以遍历对象来判断是否有自有属性
  */
@@ -87,6 +101,3 @@ function addClass(el, className) {
  * 
  * 
  */
-
-
-
