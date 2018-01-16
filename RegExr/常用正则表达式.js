@@ -25,6 +25,10 @@ var posPattern = /^\d+$/;
 var negPattern = /^-\d+$/;
 //整数正则
 var intPattern = /^-?\d+$/;
+
+// 如果有小数怎满足0开头 如果没有小数 就不能以0开头
+var patter = /(^[1-9]{1}[0-9]*$)|(^[0-9]+\.?[0-9]+$)/g;
+
 //输出 true
 console.log(posPattern.test("42"));
 //输出 true
