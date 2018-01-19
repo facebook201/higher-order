@@ -12,7 +12,24 @@
 
 
 
-> js 牢记的6个假值 0、“”、null、undefined、NaN、false。
+#### 2 判断
+ js 牢记的6个假值 0、“”、null、undefined、NaN、false。
 
 
+#### 3 if else 语句
+有时候如果逻辑很复杂的话 if else 会很多 所有我们应该首先预先不要的写在最上面
+```javascript
+
+if (abc) {
+  // function...
+} else {
+  return
+}
+
+// 下面这样就会好很多
+if (!abc) return;
+function(){
+  // ...
+}
+```
 
