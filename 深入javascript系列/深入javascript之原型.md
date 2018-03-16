@@ -3,12 +3,15 @@
 首先使用构造函数创建一个对象
 
 ```javascript
-function Car(){}
-
-var car = new Car();
-car.name = Audi;
-console.log(car.name); // Audi
+function Person() {
+    
+}
+var person = new Person();
+person.name = 'lisi';
+console.log(person.name); // lisi
 ```
+
+Person 就是一个构造函数。 使用new 创建了一个实例对象Person。
 
 
 
@@ -17,10 +20,10 @@ console.log(car.name); // Audi
 每个函数都一个prototype属性，就是我们经常在各种例子中看到的那个prototype。
 
 ```javascript
-function Car(){}
+function Person(){}
 
 // prototype 是函数才会有的属性
-Car.prototype.name = 'BMW';
+Person.prototype.name = 'zhansgan';
 var car1 = new Car();
 var car2 = new Car();
 console.log(car1, car2); // BMW BMW
