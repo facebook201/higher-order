@@ -104,7 +104,7 @@ function deepCopy(obj) {
 
 
 /** 
- * 找出重复出现在数组里面的元素 
+ * 找出重复出现在数组里面的元素
  */
 function repeat(arr) {
     var result = [];

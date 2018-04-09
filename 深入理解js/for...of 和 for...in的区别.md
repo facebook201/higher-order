@@ -45,7 +45,7 @@ for (let value of iterable) {
   }
 }(1, 2, 3));
 
-``` 
+```
 #### for in
 for...in 循环只遍历可枚举属性。
 
@@ -70,7 +70,7 @@ Object.keys(obj).forEach(...) 来遍历所有的自有属性。
 
 * for...in 语句 以原始插入顺序迭代对象的可枚举 注意要原型链上的 hasOwnProperty
 * for of  语句 遍历 可迭代对象定义要迭代的数据
-* for in 遍历数组的 返回的是属性（也就是索引 而 for of是属性值）
+* for in 遍历数组的返回的是属性（也就是索引 而 for of是属性值）
 * for of IE不支持
 
 
