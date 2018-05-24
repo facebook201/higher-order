@@ -62,19 +62,60 @@ class ChildClass extends BaseClass {
 
 
 
+#### foreach
+
+每次循环中 当前单元的值被赋给 $value。是直接复制当前单元的值 也就是说相当于是另一个变量 只是跟data
+
+里面的变量相同 除此之外没有关系。 两个解决办法
+
+```php
+foreach ($data as $key => $value) {
+	$data[$key] = $value * 2;
+}
+
+// 第二种
+// 当foreach 开始执行时候 数组内部的指针会自动指向第一个单元 可以在 $value 之前加上 & 来修改数组的元素
+// 数组最后一个元素的 $value 在foreach循环结束后仍然会保留 建议unset销毁
+foreach($data as &$value) {
+    $value = $value * 3;
+}
+
+$arr = array(1, 2);
+
+foreach ($arr as $key => $val) {
+	$arr[$key] = $val * 2;
+}
+
+foreach ($arr as &$val) {
+	echo $val * 3;
+}
+```
 
 
 
+#### isset的行为
+
+isset不仅会在变量不存在的时候返回 false 在变量值为null的时候也会返回false
+
+```php
+$data = fetchRecordFromStorage($storage, $identifier);
+if (!isset($data['keyShouldBeSet'])) {
+	// do something here if 'keyShouldBeSet'
+}
+
+// 如果data里面的 keyShouldBeSet 值为 null 也会返回false
+```
 
 
 
+虽然检查一个变量是否真的存在很重要 但是 区分一个变量是否未被设置还是被设置null 但是使用array_key_exists 这个函数却是个更健壮的解决途径。
 
-
-
-
-
-
-
+```php
+$data = fetchRecordFromStorage($storage, $identifier);
+if (! array_key_exists('keyShouldBeSet', $data)) {
+    // do this if 'keyShouldBeSet' isn't set
+}
+```
 
 
 
