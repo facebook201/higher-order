@@ -11,4 +11,4 @@
 
 **define(name,value,boolean)** 
 
-三个参数 常量名称  常量的值 是否对常量大小写敏感 默认false
+三个参数 常量名称  常量的值 是否对常量大小写敏感 默认false  -
