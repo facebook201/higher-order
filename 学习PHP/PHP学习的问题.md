@@ -121,9 +121,38 @@ if (! array_key_exists('keyShouldBeSet', $data)) {
 
 
 
+### 操作运算符
 
 
 
+
+
+
+
+#### 怎么记录错误日志 怎么抛出异常 怎么监控程序运行时错误
+
+错误日志是否只有再异常或者抛出错误的时候才记录
+
+```php
+// 举个例子
+function varDump() {
+	// 假设传的参数有误就直接返回
+	if (func_num_args() <= 0) {
+		return;
+	}
+	// 保存参数数组
+	$params = func_get_args();
+
+	foreach($params as $param) {
+		if (is_integer($param)) {
+			echo 'int('. $param .')';
+		}
+		if (is_string($param)) {
+			echo 'string('. strlen($param) .') ' .$param .'';
+		}
+	}
+}
+```
 
 
 
