@@ -1,0 +1,12 @@
+### 进入数据库 到mysql bin目录下
+
+> mysql -u root -p // 进入数据库 然后输入密码
+
+> mysqladmin -u root password "new_password"
+
+> show databases; // 显示数据库
+
+> create databases demo; // 创建数据库 
+
+> exit; // 退出数据库
+
