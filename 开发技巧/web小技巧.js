@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 短信倒计时
  * @param { el } 短信按钮
  */
@@ -17,13 +17,13 @@ function setTime(el) {
         el.innerHTML = awitTime + 'S';
         el.style.backgroundColor = '#ccc';
         awitTime--;
-        timeId = setTimeout(function() {
+        timeId = setTimeout(function () {
             setTime(el);
         }, 1000);
     }
 }
 
-dom.addEventListener('click', function(eve) {
+dom.addEventListener('click', function (eve) {
     if (1) {
         setTime(this);
     }
@@ -64,8 +64,8 @@ function filterParam(param) {
  * 判断一个对象是否为空 对象是没有length属性的 但是我们可以遍历对象来判断是否有自有属性
  */
 
-function isEmptyObj(obj){
-    for (var i in obj){
+function isEmptyObj(obj) {
+    for (var i in obj) {
         return true;
     }
     return false;
@@ -98,6 +98,61 @@ function addClass(el, className) {
 }
 
 /**
- * 
- * 
+ * 大数据渲染
+ * 两种方案 setTimeout定时器 createDocumentFragment
  */
+// 第一种方案
+
+var app = document.getElementById("app");
+
+var j = 1;
+/**
+ * 渲染方式
+ * 
+ * @number {number} 数量
+ * */
+function showDom(number) {
+    console.log('渲染' + (j++) + "次");
+    for (var i = 0; i < number; i++) {
+        var span = document.createElement("span");
+        span.innerHTML = i;
+        app.appendChild(span);//例子才会这样写的
+		/**
+    	*工作中会 这样写，拼接字符串，for循环结束后一次性appendChild
+    	*/
+    }
+}
+/**
+ * 渲染大数据量的dom节点
+ * 
+ * @count {number} 总数量
+ * 
+ * */
+function init(count) {
+    if (typeof count !== "number") {
+        console.warn(count + "类型不是：Number");
+        return;
+    }
+    if (count > 500) {
+        setTimeout(function () {
+            showDom(500);
+            init(count - 500);
+        }, 200);
+    } else {
+        showDom(count);
+    }
+}
+
+init(4000);
+
+function showDom1(number) {
+
+    for (var i = 0; i < number; i++) {
+        var span = document.createElement("span");
+        span.innerHTML = i;
+        fragment.appendChild(span);
+    }
+    app.appendChild(fragment);
+}
+showDom1(10000);
+
