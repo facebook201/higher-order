@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+    <script src="./vue.js"></script>
+    <script src="./vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>计算属性</p>
+    </div>
+    <script>
+      Vue.use(Vuex);
+      var store = new Vuex.Store({
+        state: {
+          name: '张三',
+          age: 13
+        },
+        getters: {
+          getName(state) {
+            return state.name;
+          }
+        }
+      });
+
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          name: '1'
+        },
+        store: store
+      });
+    </script>
+
+<script>
+
+</script>
+</body>
+</html>
