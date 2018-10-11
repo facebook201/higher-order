@@ -5,6 +5,7 @@
   var monthData;
   var $wapper;
   var isOpen;
+  var nodeList;
 
   // 在datepicker里面加一个构建界面的方法 因为这里要多次渲染
   datepicker.buildUI = function(year, month) {
@@ -37,7 +38,7 @@
             className = 'next-month';
           }
 
-          html += '<td><div class="' + className +'">' + date.showDate + '</div></td>';
+          html += '<td><div class="' + className + '" data-date="'+ date.showDate +'" data-monthIndex= "' + date.date + '">' + date.showDate + '</div></td>';
 
           // 最后一行
           if (i%7 === 6) {
@@ -99,21 +100,11 @@
       }
     }, false);
 
+    
+  
     // 切换上下月份的
     $wapper.addEventListener('click', function(e){
       var $target = e.target;
-      var nodeList = document.querySelector('div');
-      console.log(nodeList);
-      if ($target.nodeName.toLowerCase() == 'div') {
-        // 给选择的值标记一下
-        if ($target.classList.contains('curr')) {
-          // 如果包含就不变 隐藏
-          $wapper.classList.remove('datepicker-wapper-show');
-          isOpen = false;
-        } else {
-          // 清除所有的
-        }
-      }
 
       // 如果不包含按钮
       if (!$target.classList.contains('datepicker-btn')) {
@@ -126,6 +117,50 @@
         datepicker.render('next');
       }  
     
+    }, false);
+
+    $wapper.addEventListener('click', function(e){
+      var $target = e.target;
+
+      nodeList = [...document.querySelectorAll('td div')];
+
+      if ($target.tagName.toLowerCase() !== 'div') return;
+
+      var date = new Date(monthData.year, monthData.days[$target.dataset.monthindex - 1].month - 1, $target.dataset.date);
+
+        // 给选择的值标记一下
+        if ($target.classList.contains('curr')) {
+          // 如果包含就不变 隐藏
+          $wapper.classList.remove('datepicker-wapper-show');
+          isOpen = false;
+        } else {
+          // 清除所有的
+          nodeList.forEach(ele => {
+            if (ele.classList.contains('curr')) {
+              ele.classList.remove('curr');
+            }
+          });
+          $target.classList.add('curr');
+          $input.value = format(date);
+          $wapper.classList.remove('datepicker-wapper-show');
+          if ($target.classList.contains('next-month')) {
+            datepicker.render('next');
+          } else if($target.classList.contains('prev-month')) {
+            datepicker.render('prev');
+          }
+          isOpen = false;
+        }
+
+        function format(date) {
+          ret = '';
+          var padding = function(num) {
+            if (num <= 9) {
+              return '0' + num;
+            }
+            return num;
+          };
+          return date.getFullYear() + '-' + padding(date.getMonth() + 1) + '-' + padding(date.getDate());
+        }
     }, false);
   };
 
